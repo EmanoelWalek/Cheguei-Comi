@@ -16,17 +16,18 @@
 
             <div class="d-flex align-items-center gap-3">
                 <img src="../imagens/logo.png" alt="Logo" class="logo">
-                <h1 class="m-0 text-white">
-                    CARDÁPIO — <span id="nomeCantina"></span>
-                </h1>
+                <div>
+                    <p class="m-0 text-white opacity-75 fs-6 text-uppercase" style="letter-spacing:0.08em;">Cardápio</p>
+                    <h1 class="m-0 text-white" id="nomeCantina"></h1>
+                </div>
             </div>
 
-            <div class="d-flex gap-3">
+            <div class="d-flex gap-3 align-items-center">
                 <button id="btnMenu" class="btn btn-lg btn-padaria">
                     ← CANTINAS
                 </button>
-                <button class="btn btn-lg btn-padaria">
-                    COMPRAR AGORA
+                <button id="btnPedido" class="btn btn-lg btn-padaria btn-pedido-header">
+                    🛒 PEDIDO <span id="badgeCarrinho" class="badge-carrinho d-none">0</span>
                 </button>
             </div>
 
@@ -35,76 +36,131 @@
 </header>
 
 <main class="container my-5">
+
+    <!-- Barra de total flutuante -->
+    <div id="barraTotal" class="barra-total d-none">
+        <span id="barraTotalTexto">0 item — R$ 0,00</span>
+        <button id="btnIrPedido" class="btn btn-padaria btn-sm">Ver pedido →</button>
+    </div>
+
     <div class="row g-4">
 
         <!-- Produto 1 -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card produto-card h-100">
+            <div class="card produto-card h-100" data-nome="Coxinha de Frango" data-preco="8.00">
                 <div class="card-header produto-titulo">Coxinha de Frango</div>
-                <img src="../imagens/coxinha.jpg" alt="Coxinha de Frango" class="produto-img">
+                <div class="produto-img-wrapper">
+                    <img src="../imagens/coxinha.jpg" alt="Coxinha de Frango" class="produto-img">
+                    <div class="produto-overlay">
+                        <span class="overlay-texto">+ Adicionar</span>
+                    </div>
+                    <span class="produto-badge d-none">0</span>
+                </div>
                 <div class="card-footer produto-preco">R$ 8,00</div>
             </div>
         </div>
 
         <!-- Produto 2 -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card produto-card h-100">
+            <div class="card produto-card h-100" data-nome="Risoles de Presunto e Queijo" data-preco="7.50">
                 <div class="card-header produto-titulo">Risoles de Presunto e Queijo</div>
-                <img src="../imagens/risoles.jpg" alt="Risoles" class="produto-img">
+                <div class="produto-img-wrapper">
+                    <img src="../imagens/risoles.jpg" alt="Risoles" class="produto-img">
+                    <div class="produto-overlay">
+                        <span class="overlay-texto">+ Adicionar</span>
+                    </div>
+                    <span class="produto-badge d-none">0</span>
+                </div>
                 <div class="card-footer produto-preco">R$ 7,50</div>
             </div>
         </div>
 
         <!-- Produto 3 -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card produto-card h-100">
+            <div class="card produto-card h-100" data-nome="Empada de Frango" data-preco="9.00">
                 <div class="card-header produto-titulo">Empada de Frango</div>
-                <img src="../imagens/empada.jpg" alt="Empada de Frango" class="produto-img">
+                <div class="produto-img-wrapper">
+                    <img src="../imagens/empada.jpg" alt="Empada de Frango" class="produto-img">
+                    <div class="produto-overlay">
+                        <span class="overlay-texto">+ Adicionar</span>
+                    </div>
+                    <span class="produto-badge d-none">0</span>
+                </div>
                 <div class="card-footer produto-preco">R$ 9,00</div>
             </div>
         </div>
 
         <!-- Produto 4 -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card produto-card h-100">
+            <div class="card produto-card h-100" data-nome="Pão de Queijo" data-preco="5.00">
                 <div class="card-header produto-titulo">Pão de Queijo</div>
-                <img src="../imagens/paoqueijo.jpg" alt="Pão de Queijo" class="produto-img">
+                <div class="produto-img-wrapper">
+                    <img src="../imagens/paoqueijo.jpg" alt="Pão de Queijo" class="produto-img">
+                    <div class="produto-overlay">
+                        <span class="overlay-texto">+ Adicionar</span>
+                    </div>
+                    <span class="produto-badge d-none">0</span>
+                </div>
                 <div class="card-footer produto-preco">R$ 5,00</div>
             </div>
         </div>
 
         <!-- Produto 5 -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card produto-card h-100">
+            <div class="card produto-card h-100" data-nome="Coca Cola" data-preco="8.00">
                 <div class="card-header produto-titulo">Coca Cola</div>
-                <img src="../imagens/coca.jpg" alt="Coca Cola" class="produto-img">
+                <div class="produto-img-wrapper">
+                    <img src="../imagens/coca.jpg" alt="Coca Cola" class="produto-img">
+                    <div class="produto-overlay">
+                        <span class="overlay-texto">+ Adicionar</span>
+                    </div>
+                    <span class="produto-badge d-none">0</span>
+                </div>
                 <div class="card-footer produto-preco">R$ 8,00</div>
             </div>
         </div>
 
         <!-- Produto 6 -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card produto-card h-100">
+            <div class="card produto-card h-100" data-nome="Red Bull" data-preco="8.00">
                 <div class="card-header produto-titulo">Red Bull</div>
-                <img src="../imagens/bull.jpg" alt="Red Bull" class="produto-img">
+                <div class="produto-img-wrapper">
+                    <img src="../imagens/bull.jpg" alt="Red Bull" class="produto-img">
+                    <div class="produto-overlay">
+                        <span class="overlay-texto">+ Adicionar</span>
+                    </div>
+                    <span class="produto-badge d-none">0</span>
+                </div>
                 <div class="card-footer produto-preco">R$ 8,00</div>
             </div>
         </div>
 
         <!-- Produto 7 -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card produto-card h-100">
+            <div class="card produto-card h-100" data-nome="Monster" data-preco="8.00">
                 <div class="card-header produto-titulo">Monster</div>
-                <img src="../imagens/monster.jpg" alt="Monster" class="produto-img">
+                <div class="produto-img-wrapper">
+                    <img src="../imagens/monster.jpg" alt="Monster" class="produto-img">
+                    <div class="produto-overlay">
+                        <span class="overlay-texto">+ Adicionar</span>
+                    </div>
+                    <span class="produto-badge d-none">0</span>
+                </div>
                 <div class="card-footer produto-preco">R$ 8,00</div>
             </div>
         </div>
 
         <!-- Produto 8 -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card produto-card h-100">
+            <div class="card produto-card h-100" data-nome="Chá Mate Leão" data-preco="8.00">
                 <div class="card-header produto-titulo">Chá Mate Leão</div>
-                <img src="../imagens/mate.jpg" alt="Chá Mate Leão" class="produto-img">
+                <div class="produto-img-wrapper">
+                    <img src="../imagens/mate.jpg" alt="Chá Mate Leão" class="produto-img">
+                    <div class="produto-overlay">
+                        <span class="overlay-texto">+ Adicionar</span>
+                    </div>
+                    <span class="produto-badge d-none">0</span>
+                </div>
                 <div class="card-footer produto-preco">R$ 8,00</div>
             </div>
         </div>
