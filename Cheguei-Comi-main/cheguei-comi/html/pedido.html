@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pedido.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido</title>
+</head>
+<body>
+
+<header class="header-custom">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+
+            <div class="d-flex align-items-center gap-3">
+                <img src="../imagens/logo.png" alt="Logo" class="logo">
+                <div>
+                    <h1 class="m-0 text-white">Seu Pedido</h1>
+                    <p class="m-0 text-white opacity-75 fs-6" id="nomeCantinaPedido"></p>
+                </div>
+            </div>
+
+            <button id="btnVoltarCardapio" class="btn btn-lg btn-padaria">
+                ← CARDÁPIO
+            </button>
+
+        </div>
+    </div>
+</header>
+
+<main class="container my-5">
+    <div class="row g-4 justify-content-center">
+
+        <!-- Destaque da cantina -->
+        <div class="col-12">
+            <div class="cantina-destaque">
+                <span class="cantina-destaque-label">📍 Cantina</span>
+                <span class="cantina-destaque-nome" id="cantinaNomePedido"></span>
+            </div>
+        </div>
+
+        <!-- Lista de itens -->
+        <div class="col-lg-7">
+            <div class="pedido-box">
+                <h2 class="pedido-secao-titulo">Itens do pedido</h2>
+                <div id="listaItens">
+                    <!-- Itens gerados pelo JS -->
+                </div>
+
+                <div id="semItens" class="text-center py-4 d-none">
+                    <p class="text-muted">Nenhum item adicionado ainda.</p>
+                    <a id="linkCardapio" href="cardapio.html" class="btn btn-padaria">Ver cardápio</a>
+                </div>
+
+                <div class="pedido-total d-flex justify-content-between align-items-center mt-3" id="totalBox">
+                    <span class="pedido-total-label">Total</span>
+                    <span class="pedido-total-valor" id="totalValor">R$ 0,00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagamento -->
+        <div class="col-lg-5">
+            <div class="pedido-box">
+                <h2 class="pedido-secao-titulo">Pagamento</h2>
+
+                <div class="pagamento-opcoes">
+
+                    <label class="pagamento-opcao" id="labelCredito">
+                        <input type="radio" name="pagamento" value="credito" id="radioCredito">
+                        <div class="pagamento-icone">💳</div>
+                        <div>
+                            <div class="pagamento-nome">Cartão de Crédito</div>
+                            <div class="pagamento-desc">Parcele em até 3x sem juros</div>
+                        </div>
+                    </label>
+
+                    <label class="pagamento-opcao" id="labelDebito">
+                        <input type="radio" name="pagamento" value="debito" id="radioDebito">
+                        <div class="pagamento-icone">💳</div>
+                        <div>
+                            <div class="pagamento-nome">Cartão de Débito</div>
+                            <div class="pagamento-desc">Débito à vista na maquininha</div>
+                        </div>
+                    </label>
+
+                    <label class="pagamento-opcao" id="labelPix">
+                        <input type="radio" name="pagamento" value="pix" id="radioPix">
+                        <div class="pagamento-icone">⚡</div>
+                        <div>
+                            <div class="pagamento-nome">Pix</div>
+                            <div class="pagamento-desc">Aprovação instantânea</div>
+                        </div>
+                    </label>
+
+                </div>
+
+                <!-- Chave Pix (aparece só quando Pix for selecionado) -->
+                <div id="pixInfo" class="pix-info d-none">
+                    <p class="pix-label">Chave Pix</p>
+                    <div class="pix-chave" id="pixChave">chegaecome@gmail.com</div>
+                    <button class="btn btn-sm btn-padaria mt-2 w-100" id="btnCopiarPix">Copiar chave</button>
+                </div>
+
+                <button class="btn btn-padaria btn-lg w-100 mt-4" id="btnConfirmar">
+                    CONFIRMAR PEDIDO
+                </button>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<!-- Modal de confirmação -->
+<div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content confirmacao-modal">
+            <div class="modal-body p-4">
+                <div class="text-center mb-4">
+                    <div class="confirmacao-icone">✅</div>
+                    <h3 class="confirmacao-titulo">Pedido confirmado!</h3>
+                    <p class="confirmacao-texto" id="confirmacaoTexto"></p>
+                </div>
+
+                <div class="json-box">
+                    <div class="json-header">
+                        <span class="json-label">JSON do pedido</span>
+                        <button class="btn-copiar-json" id="btnCopiarJson">Copiar</button>
+                    </div>
+                    <pre class="json-conteudo" id="jsonPedido"></pre>
+                </div>
+
+                <div class="d-flex gap-3 mt-4">
+                    <button class="btn btn-padaria btn-lg flex-fill" id="btnBaixarJson">⬇ Baixar JSON</button>
+                    <button class="btn btn-padaria btn-lg flex-fill" id="btnNovosPedidos">Novo pedido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container text-center">
+        <p class="m-0">© 2025 Cheguei Comi</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../javascript/pedido.js"></script>
+
+</body>
+</html>

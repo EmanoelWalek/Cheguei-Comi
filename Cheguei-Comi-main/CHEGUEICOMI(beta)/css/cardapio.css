@@ -1,0 +1,83 @@
+:root{
+    --bege:#d1923e;
+    --marrom:#7c4012;
+    --marrom-escuro:#452105;
+}
+
+/* Cards dos produtos */
+.produto-card{
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+    transition: 0.3s;
+}
+
+.produto-card:hover{
+    transform: translateY(-5px);
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.20);
+}
+
+/* Cabeçalho */
+.produto-titulo{
+    background: linear-gradient(
+        135deg,
+        var(--marrom),
+        var(--bege)
+    );
+
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+}
+
+/* Imagem */
+.produto-img{
+    height: 220px;
+    object-fit: cover;
+}
+
+/* Rodapé */
+.produto-preco{
+    background: linear-gradient(
+        135deg,
+        var(--marrom),
+        var(--bege)
+    );
+
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+}
+
+.btn-padaria{
+    background: var(--marrom-escuro);
+    
+
+    color:white;
+    border:none;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+
+.header-custom{
+    background: linear-gradient(
+        135deg,
+        var(--marrom),
+        var(--bege)
+    );
+
+    padding: 20px;
+}
+
+.logo{
+    width:100px;
+    height:100px;
+    object-fit:contain;
+}
